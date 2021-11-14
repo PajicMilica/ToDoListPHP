@@ -1,0 +1,45 @@
+input[type=text], select {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+
+h2{
+    text-align: center;
+}
+
+body{
+    background-image: url("../slike/druga.jpg");
+     background-size: 100% 100%; 
+    background-repeat: no-repeat;
+    background-attachment: fixed; 
+    color: #0e4b50;
+}
+  
+  input[type=submit] {
+    width: 25%;
+    background-color: #8b3a84;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  input[type=submit]:hover {
+    background-color: #c0559c;
+  }
+  
+  div {
+    margin-left: 500px;
+    margin-right: 600px;
+    margin-top: 150px;
+    border-radius: 5px;
+    background-color: #ecc6e6;
+    padding: 20px;
+  }
