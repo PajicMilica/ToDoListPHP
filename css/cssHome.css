@@ -7,59 +7,31 @@ body{
     color: #271e17;
 
 }
-table {
-    font-family: arial, sans-serif;
-    border-collapse: collapse;
-    width: 100%;
-  }
-  
-  td, th {
-    border: 5px solid #f0dec4;
-    text-align: left;
-    padding: 8px;
-  }
-  th{
-    color: rgb(255, 255, 255);  
-    text-align: center;
-  }
-  #i{
-    background-color: #463123;
-  }
-  tr{
-    background-color:rgb(158, 127, 100)
-  }
- 
-  div {
-    margin-left: 200px;
-    margin-right: 200px;
-    margin-top: 270px;
-    border-radius: 5px;
-    background-color: #463123;
-    padding: 20px;
-  }
-  .button {
-    background-color: #4CAF50; /* Green */
-    border: none;
-    color: white;
-    padding: 20px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    margin: 4px 2px;
-    cursor: pointer;
-  }
-  
-.button1 {
-    border-radius: 2px;
-    font-size: 5px;
-    }
-.button2 {
-    border-radius: 4px;
-    font-size: 5px;
+td, th {
+  border: 5px solid #3d1a1a;
+  text-align: left;
+  padding: 8px;
 }
-.button3 {
-    border-radius: 8px;
-    font-size: 5px;
+
+th{
+  color: rgb(212, 198, 198);  
+  background-color: rgb(128, 0, 0);
+  text-align: center;
 }
+tr{
+  background-color: #3d1a1a;
+  color: #3d1a1a;
 }
+
+#pregled{
+  background-color: rgb(233, 211, 197);
+  border: 5px solid #3d1a1a;
+}
+#myModal{
+  margin-top: auto;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: auto;
+}
+
+;
