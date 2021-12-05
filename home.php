@@ -1,3 +1,17 @@
+<?php
+
+require "dbbroker.php";
+require "model/dodaj.php";
+
+
+session_start();
+if (!isset($_SESSION['user_id'])) {
+    header('Location: index.php');
+    exit();
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,8 +26,6 @@
 
 <body>
 
-    
-    
 
     <div class="row" style=" margin-top: 16%; background-color: rgba(225, 225, 208, 0.5);">
         <div class="col-md-4">
@@ -55,8 +67,6 @@
 
         <div class="modal fade" id="myModal" role="dialog" style="width: 800px; height: 500px; background-color: rgb(128, 0, 0); border: 5px solid #3d1a1a;">
             <div class="modal-dialog">
-                <!-- zakazi modal -->
-                <!--Sadrzaj modala-->
                 <div class="modal-content">
                         <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal">&times;</button>
@@ -72,7 +82,7 @@
                                 <input type="date" style="border: 1px solid black; width: 180px;" name="datum" class="form-control" /><br>
 
                                 <label for="item">Urgent:</label><br>
-                                <input type="text" id="item" name="nameItem" placeholder="Urgent or not urgent.."><br>
+                                <input type="text" id="item" name="urgent" placeholder="Urgent or not urgent.."><br>
 
                                 
                                 <button id="btnDodaj" type="submit" class="btn btn-success btn-block" style="width: 100px; color:rgb(128, 0, 0); background-color: rgb(233, 211, 197); border: 3px solid rgb(128, 0, 0);" tyle="background-color: pink; border: 1px solid black;">Add item</button>

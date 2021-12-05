@@ -1,3 +1,29 @@
+<?php
+
+require "dbbroker.php";
+require "model/user.php";
+
+session_start();
+if(isset($_POST['username']) && isset($_POST['password'])){
+    $usename = $_POST['username'];
+    $pass = $_POST['password'];
+
+    $korisnik = new User(1, $usename, $uass);
+    $odg = User::logInUser($korisnik, $conn); 
+
+    if($odg->num_rows==1){
+        echo console.log("Uspešno ste se prijavili");
+        $_SESSION['user_id'] = $korisnik->id;
+        header('Location: home.php');
+        
+        exit();
+    }else{
+        echo
+        console.log( "Niste se prijavili!");
+    }
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,13 +38,13 @@
 
 <div>
     
-  <form action="/action_page.php">
+  <form method="POST" action="#">
   <h2>Login form</h2>
     <label for="username">Username:</label><br>
-    <input type="text" id="username" name="firstname" placeholder="Your username.."><br>
+    <input type="text" name="username" placeholder="Your username.."><br>
     
     <label for="password">Password:</label><br>
-    <input type="text" id="password" name="lastname" placeholder="Your password.."><br>
+    <input type="text" name="password" placeholder="Your password.."><br>
   
     <input type="submit" value="Login">
   </form>
