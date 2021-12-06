@@ -32,6 +32,13 @@ class Dodaj{
         $query = "INSERT INTO item(nameItem, datum, urgent, user) VALUES('$dodaj->nameItem','$dodaj->datum','$dodaj->urgent','$dodaj->user')";
         return $conn->query($query);
     }
+
+  public static function getAll($id, mysqli $conn)
+  {
+      $query = "SELECT * FROM item WHERE user=$id";
+      return $conn->query($query);
+  }
+
 }
 
 ?>

@@ -1,5 +1,4 @@
 <?php
-
 require "dbbroker.php";
 require "model/user.php";
 
@@ -8,18 +7,17 @@ if(isset($_POST['username']) && isset($_POST['password'])){
     $usename = $_POST['username'];
     $pass = $_POST['password'];
 
-    $korisnik = new User(1, $usename, $uass);
+    $korisnik = new User(1, $usename, $pass);
     $odg = User::logInUser($korisnik, $conn); 
 
     if($odg->num_rows==1){
         echo console.log("Uspešno ste se prijavili");
         $_SESSION['user_id'] = $korisnik->id;
         header('Location: home.php');
-        
         exit();
+
     }else{
-        echo
-        console.log( "Niste se prijavili!");
+        echo console.log( "Niste se prijavili!");
     }
 }
 ?>

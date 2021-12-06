@@ -10,6 +10,15 @@ if (!isset($_SESSION['user_id'])) {
     exit();
 }
 
+$podaci = Dodaj::getAll($_SESSION['user_id'],$conn);
+if (!$podaci) {
+    echo "Nastala je greška pri preuzimanju podataka";
+    die();
+}
+if ($podaci->num_rows == 0) {
+    echo "Nema prijava na kolokvijume";
+    die();
+} else {
 ?>
 
 <!DOCTYPE html>
@@ -44,7 +53,7 @@ if (!isset($_SESSION['user_id'])) {
 
     <div id="pregled" class="panel panel-success" style="margin-top:5%; margin-left: 5%; margin-right: 5%;">
             <div class="panel-body">
-                <table id="myTable" class="table table-hover table-striped" style=" color: rgb(128, 0, 0); background-color:rgb(128, 0, 0);">
+                <table id="myTable" class="table table-hover table-striped"  style="color: black; background-color: white;" >
                     <thead class="thead">
                         <tr>
                             <th scope="col">Name item</th>
@@ -53,11 +62,28 @@ if (!isset($_SESSION['user_id'])) {
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td> </td>
-                            <td> </td>
-                            <td></td>
-                        </tr>
+                    
+                        <?php
+                       
+                        while ($red = $podaci->fetch_array()) :
+                        ?>
+                            <tr>
+                                <td><?php echo $red["nameItem"] ?></td>
+                                <td><?php echo $red["datum"] ?></td>
+                                <td><?php echo $red["urgent"] ?>
+                                
+                                <label class="custom-radio-btn" style="margin-left: 95%;";>
+                                    <input type="radio" name="checked-donut" value=<?php echo $red["idItem"] ?>>
+                                    <span class="checkmark"></span>
+                                </label>
+                                </td>
+                               
+                            </tr>
+                        <?php
+                        endwhile;
+                    }
+                        ?>
+                        
                     </tbody>
                 </table>
             </div>      
@@ -99,6 +125,21 @@ if (!isset($_SESSION['user_id'])) {
     <script src="JS/javascript.js"></script>
         
 
+    <script>
+        let i=0;
+        function izbaci(){
+            if(!$podaci){}
+            while($k = $podaci->fetch_array()){
+                if($k["user"] !=$_SESSION['user_id'] ){
+                    unset($podaci[i]);
+                }else{
+                i++;
+                }
+            }
+            return $podaci;
+        }
+
+    </script>
 
 
 

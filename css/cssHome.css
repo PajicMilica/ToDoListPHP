@@ -4,10 +4,10 @@ body{
      background-size: 100% 100%; 
     background-repeat: no-repeat;
     background-attachment: fixed; 
-    color: #271e17;
+   
 
 }
-td, th {
+td, th,label {
   border: 5px solid #3d1a1a;
   text-align: left;
   padding: 8px;
@@ -18,20 +18,11 @@ th{
   background-color: rgb(128, 0, 0);
   text-align: center;
 }
-tr{
-  background-color: #3d1a1a;
-  color: #3d1a1a;
-}
 
 #pregled{
   background-color: rgb(233, 211, 197);
   border: 5px solid #3d1a1a;
 }
-#myModal{
-  margin-top: auto;
-  margin-left: auto;
-  margin-right: auto;
-  margin-bottom: auto;
-}
+
 
 ;
