@@ -17,7 +17,7 @@ class Dodaj{
 
     public function deleteById(mysqli $conn)
     {
-        $query = "DELETE FROM iteme WHERE id=$this->id";
+        $query = "DELETE FROM item WHERE idItem=$this->id";
         return $conn->query($query);
     }
 

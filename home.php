@@ -59,25 +59,24 @@ if ($podaci->num_rows == 0) {
                             <th scope="col">Name item</th>
                             <th scope="col">Final date</th>
                             <th scope="col">Urgency of execution</th>
+                            <th></th>
                         </tr>
                     </thead>
                     <tbody>
                     
                         <?php
-                       
                         while ($red = $podaci->fetch_array()) :
                         ?>
                             <tr>
                                 <td><?php echo $red["nameItem"] ?></td>
                                 <td><?php echo $red["datum"] ?></td>
-                                <td><?php echo $red["urgent"] ?>
-                                
-                                <label class="custom-radio-btn" style="margin-left: 95%;";>
-                                    <input type="radio" name="checked-donut" value=<?php echo $red["idItem"] ?>>
-                                    <span class="checkmark"></span>
-                                </label>
+                                <td><?php echo $red["urgent"] ?></td>
+                                <td>
+                                    <label class="custom-radio-btn" ;>
+                                        <input type="radio" name="checked-donut" value=<?php echo $red["idItem"] ?>>
+                                        <span class="checkmark"></span>
+                                    </label>
                                 </td>
-                               
                             </tr>
                         <?php
                         endwhile;
@@ -86,8 +85,21 @@ if ($podaci->num_rows == 0) {
                         
                     </tbody>
                 </table>
+                <div class="row">
+                <div class="col-md-1" style="text-align: right">
+                    <button id="btn-izmeni" class="btn btn-warning"  style="background-color: rgb(128, 0, 0); border: 1px solid white;" data-toggle="modal" data-target="#izmeniModal" >Izmeni</button>
+
+                </div>
+
+                <div >
+                    <button id="btn-obrisi" formmethod="post" class="btn btn-danger" style="background-color: rgb(128, 0, 0); border: 1px solid white;">Obrisi</button>
+                </div>
+
+
+            </div>
             </div>      
     </div>
+   
 
     
 
@@ -125,21 +137,6 @@ if ($podaci->num_rows == 0) {
     <script src="JS/javascript.js"></script>
         
 
-    <script>
-        let i=0;
-        function izbaci(){
-            if(!$podaci){}
-            while($k = $podaci->fetch_array()){
-                if($k["user"] !=$_SESSION['user_id'] ){
-                    unset($podaci[i]);
-                }else{
-                i++;
-                }
-            }
-            return $podaci;
-        }
-
-    </script>
 
 
 

@@ -17,10 +17,10 @@ $('#dodajForm').submit(function(event){
 
     req.done(function(res, textStatus, jqXHR){
         if(textStatus=="success"){
-            alert("Item uspesno dodat");
+            alert("Stavka uspesno dodata");
             console.log("Dodato");
             location.reload(true);
-        }else console.log("Item nije dodat");
+        }else console.log("Stavka nije dodata");
         console.log(res);
     });
 
@@ -29,7 +29,30 @@ $('#dodajForm').submit(function(event){
     });
 });
 
+$('#btn-obrisi').click(function(){
 
+    const checked = $('input[name=checked-donut]:checked');
+
+    req = $.ajax({
+        url: 'handler/delete.php',
+        type:'post',
+        data: {'idItem':checked.val()}
+    });
+  
+    req.done(function(res, textStatus, jqXHR){
+        if(res=="Success"){
+           checked.closest('tr').remove();
+           alert('Stavka je obrisana');
+           console.log('Obrisana stavka');
+        }else {
+        console.log("Stavka nije obrisana"+res);
+        alert("Stavka nije obrisna");
+
+        }
+        console.log(res);
+    });
+
+});
 
 $('#btn').click(function () {
     $('#pregled').toggle();
