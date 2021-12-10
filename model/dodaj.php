@@ -21,7 +21,6 @@ class Dodaj{
         return $conn->query($query);
     }
 
-
     public static function update(Dodaj $dodaj, mysqli $conn)
     {
         $query = "UPDATE item set nameItem = '$dodaj->nameItem', dateItem = '$dodaj->date', urgent = '$dodaj->urgent' WHERE idItem='$dodaj->id'";

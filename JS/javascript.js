@@ -87,7 +87,6 @@ $('#izmeniForm').submit(function(event){
 });
 
 
-
 $('#btn').click(function () {
     $('#pregled').toggle();
 });

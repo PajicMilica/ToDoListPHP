@@ -37,22 +37,19 @@ if ($podaci->num_rows == 0) {
 
 
     <div class="row" style=" margin-top: 16%; background-color: rgba(225, 225, 208, 0.5);">
-        <div class="col-md-4">
+        <div class="col-md-6">
             <button id="btn" class="btn btn-info btn-block" style="border-radius: 50%; background-color: rgb(128, 0, 0);!important; border: 3px solid black; "> Show</button>
         </div>
-        <div class="col-md-4">
+        <div class="col-md-6">
             <button id="btn-dodaj" type="button" class="btn btn-success btn-block" style=" border-radius: 50%; background-color: rgb(128, 0, 0); border: 3px solid black;" data-toggle="modal" data-target="#myModal"> Add Item</button>
-
         </div>
-        <div class="col-md-4">
-            <button id="btn-pretraga" class="btn btn-warning btn-block" style="border-radius: 50%; background-color:  rgb(128, 0, 0); border: 3px solid black;"> Search</button>
-        </div>
+        
     </div>
 
 
 
     <div id="pregled" class="panel panel-success" style="margin-top:5%; margin-left: 5%; margin-right: 5%;">
-            <div class="panel-body">
+        <div class="panel-body">
                 <table id="myTable" class="table table-hover table-striped"  style="color: black; background-color: white;" >
                     <thead class="thead">
                         <tr>
@@ -88,23 +85,21 @@ if ($podaci->num_rows == 0) {
                     </tbody>
                 </table>
                 <div class="row">
-                <div class="col-md-1" style="text-align: right">
-                    <button id="btn-izmeni" class="btn btn-warning"  style="background-color: rgb(128, 0, 0); border: 1px solid white;" data-toggle="modal" data-target="#izmeniModal" >Change</button>
+                        <div class="col-md-1" style="text-align: right">
+                            <button id="btn-izmeni" class="btn btn-warning"  style="background-color: rgb(128, 0, 0); border: 1px solid white;" data-toggle="modal" data-target="#izmeniModal" >Change</button>
+                        </div>
+
+                        <div >
+                            <button id="btn-obrisi" formmethod="post" class="btn btn-danger" style="background-color: rgb(128, 0, 0); border: 1px solid white;">Delete</button>          
+                        </div>
                 </div>
-
-                <div >
-                    <button id="btn-obrisi" formmethod="post" class="btn btn-danger" style="background-color: rgb(128, 0, 0); border: 1px solid white;">Delete</button>
-                </div>
-
-
-            </div>
-            </div>      
+        </div>      
     </div>
    
 
     
 
-        <div class="modal fade" id="myModal" role="dialog" style="width: 800px; height: 500px; background-color: rgb(128, 0, 0); border: 5px solid #3d1a1a;">
+        <div class="modal fade" id="myModal" role="dialog" style="margin-top:5%; margin-left: 25%; margin-right: 25%; margin-bottom: 10%; background-color: rgb(128, 0, 0); border: 5px solid #3d1a1a;">
             <div class="modal-dialog">
                 <div class="modal-content">
                         <div class="modal-header">
@@ -173,8 +168,6 @@ if ($podaci->num_rows == 0) {
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="JS/javascript.js"></script>
         
-
-
 
 
 </body>

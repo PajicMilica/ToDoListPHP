@@ -11,7 +11,6 @@ if(isset($_POST['username']) && isset($_POST['password'])){
     $odg = User::logInUser($korisnik, $conn); 
 
     if($odg->num_rows==1){
-        //echo console.log("Uspešno ste se prijavili");
         $_SESSION['user_id'] = $korisnik->id;
         header('Location: home.php');
         exit();

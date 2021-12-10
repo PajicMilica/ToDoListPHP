@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 10, 2021 at 10:00 AM
+-- Generation Time: Dec 11, 2021 at 12:34 AM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 8.0.12
 
@@ -40,8 +40,9 @@ CREATE TABLE `item` (
 --
 
 INSERT INTO `item` (`idItem`, `nameItem`, `dateItem`, `urgent`, `User`) VALUES
-(3, 'Tr', '2021-12-15', 'no', 1),
-(5, 'Trening', '2021-12-17', 'no', 1);
+(6, 'Posao', '2021-12-24', 'yes', 1),
+(7, 'Trening', '2021-12-16', 'Not', 1),
+(8, 'Ispit', '2021-12-31', 'Yes', 1);
 
 -- --------------------------------------------------------
 
@@ -90,7 +91,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `item`
 --
 ALTER TABLE `item`
-  MODIFY `idItem` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `idItem` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `user`
