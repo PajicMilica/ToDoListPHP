@@ -2,15 +2,15 @@
 class Dodaj{
     public $id;   
     public $nameItem;   
-    public $datum;   
+    public $date;   
     public $urgent;  
     public $user; 
     
-    public function __construct($id=null, $nameItem=null, $datum=null, $urgent=null, $user=null)
+    public function __construct($id=null, $nameItem=null, $date=null, $urgent=null, $user=null)
     {
         $this->id = $id;
         $this->nameItem = $nameItem;
-        $this->datum = $datum;
+        $this->date = $date;
         $this->urgent = $urgent;
         $this->user = $user;
     }
@@ -21,21 +21,22 @@ class Dodaj{
         return $conn->query($query);
     }
 
-    public function update($id, mysqli $conn)
+
+    public static function update(Dodaj $dodaj, mysqli $conn)
     {
-        $query = "UPDATE item set nameItem = $this->nameItem, datum = $this->datum,urgent = $this->urgent WHERE id=$id";
+        $query = "UPDATE item set nameItem = '$dodaj->nameItem', dateItem = '$dodaj->date', urgent = '$dodaj->urgent' WHERE idItem='$dodaj->id'";
         return $conn->query($query);
     }
 
     public static function add(Dodaj $dodaj, mysqli $conn)
     {
-        $query = "INSERT INTO item(nameItem, datum, urgent, user) VALUES('$dodaj->nameItem','$dodaj->datum','$dodaj->urgent','$dodaj->user')";
+        $query = "INSERT INTO item(nameItem, dateItem, urgent, User) VALUES('$dodaj->nameItem','$dodaj->date','$dodaj->urgent','$dodaj->user')";
         return $conn->query($query);
     }
 
-  public static function getAll($id, mysqli $conn)
+  public static function getAll($idUser, mysqli $conn)
   {
-      $query = "SELECT * FROM item WHERE user=$id";
+      $query = "SELECT * FROM item WHERE User=$idUser";
       return $conn->query($query);
   }
 

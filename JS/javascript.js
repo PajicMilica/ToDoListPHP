@@ -16,11 +16,11 @@ $('#dodajForm').submit(function(event){
     });
 
     req.done(function(res, textStatus, jqXHR){
-        if(textStatus=="success"){
+        if(res=="Success"){
             alert("Stavka uspesno dodata");
             console.log("Dodato");
             location.reload(true);
-        }else console.log("Stavka nije dodata");
+        }else console.log("Stavka nije dodata" + res);
         console.log(res);
     });
 
@@ -53,6 +53,40 @@ $('#btn-obrisi').click(function(){
     });
 
 });
+
+
+$('#izmeniForm').submit(function(event){
+    event.preventDefault();
+    console.log("Izmena");
+    const $form =$(this);
+    const $input = $form.find('input, select, button, textarea');
+
+    const serijalizacija = $form.serialize();
+    console.log(serijalizacija);
+
+    $input.prop('disabled', true);
+
+    req = $.ajax({
+        url: 'handler/update.php',
+        type:'post',
+        data: serijalizacija
+    });
+
+    req.done(function(res, textStatus, jqXHR){
+        if(res=="Success"){
+            alert("Item changed");
+            console.log("Izmenjeno");
+            location.reload(true);
+        }else console.log("Stavka nije izmenjena" + res);
+        console.log(res);
+    });
+
+    req.fail(function(jqXHR, textStatus, errorThrown){
+        console.error('Sledeca greska se desila> '+textStatus, errorThrown)
+    });
+});
+
+
 
 $('#btn').click(function () {
     $('#pregled').toggle();

@@ -16,7 +16,7 @@ if (!$podaci) {
     die();
 }
 if ($podaci->num_rows == 0) {
-    echo "Nema prijava na kolokvijume";
+    echo "Nema item-a";
     die();
 } else {
 ?>
@@ -56,6 +56,7 @@ if ($podaci->num_rows == 0) {
                 <table id="myTable" class="table table-hover table-striped"  style="color: black; background-color: white;" >
                     <thead class="thead">
                         <tr>
+                        <th scope="col">Id item</th>
                             <th scope="col">Name item</th>
                             <th scope="col">Final date</th>
                             <th scope="col">Urgency of execution</th>
@@ -64,12 +65,13 @@ if ($podaci->num_rows == 0) {
                     </thead>
                     <tbody>
                     
-                        <?php
+                       <?php
                         while ($red = $podaci->fetch_array()) :
                         ?>
                             <tr>
+                            <td><?php echo $red["idItem"] ?></td>
                                 <td><?php echo $red["nameItem"] ?></td>
-                                <td><?php echo $red["datum"] ?></td>
+                                <td><?php echo $red["dateItem"] ?></td>
                                 <td><?php echo $red["urgent"] ?></td>
                                 <td>
                                     <label class="custom-radio-btn" ;>
@@ -87,12 +89,11 @@ if ($podaci->num_rows == 0) {
                 </table>
                 <div class="row">
                 <div class="col-md-1" style="text-align: right">
-                    <button id="btn-izmeni" class="btn btn-warning"  style="background-color: rgb(128, 0, 0); border: 1px solid white;" data-toggle="modal" data-target="#izmeniModal" >Izmeni</button>
-
+                    <button id="btn-izmeni" class="btn btn-warning"  style="background-color: rgb(128, 0, 0); border: 1px solid white;" data-toggle="modal" data-target="#izmeniModal" >Change</button>
                 </div>
 
                 <div >
-                    <button id="btn-obrisi" formmethod="post" class="btn btn-danger" style="background-color: rgb(128, 0, 0); border: 1px solid white;">Obrisi</button>
+                    <button id="btn-obrisi" formmethod="post" class="btn btn-danger" style="background-color: rgb(128, 0, 0); border: 1px solid white;">Delete</button>
                 </div>
 
 
@@ -116,8 +117,8 @@ if ($podaci->num_rows == 0) {
                                 <label for="item">Name item:</label><br>
                                 <input type="text" id="item" name="nameItem" placeholder="Name item.."><br>
                             
-                                <label for="">Datum</label>
-                                <input type="date" style="border: 1px solid black; width: 180px;" name="datum" class="form-control" /><br>
+                                <label for="">Date</label>
+                                <input type="date" style="border: 1px solid black; width: 180px;" name="date" class="form-control" /><br>
 
                                 <label for="item">Urgent:</label><br>
                                 <input type="text" id="item" name="urgent" placeholder="Urgent or not urgent.."><br>
@@ -130,6 +131,42 @@ if ($podaci->num_rows == 0) {
                 </div>
             </div>
         </div>
+
+           
+    </div>
+    <div class="modal fade" id="izmeniModal" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                    <div class="modal-body">
+                        <div class="container prijava-form">
+
+                            <form action="#" method="post" id="izmeniForm" >
+                                <h2>Change item</h2>
+
+                                <label for="id">Id of the item you want to change:</label><br>
+                                <input type="text" id="id" name="id" placeholder="id.."><br>
+
+                                <label for="item">New name item:</label><br>
+                                <input type="text" id="nameItem" name="nameItem" placeholder="New name item.."><br>
+                            
+                                <label for="">Date</label>
+                                <input type="date" id="date" style="border: 1px solid black; width: 180px;" name="date" class="form-control" /><br>
+
+                                <label for="item">Urgent:</label><br>
+                                <input type="text" id="urgent" name="urgent" placeholder="Urgent or not urgent.."><br>
+
+                                <button id="btnIzmeni" type="submit" class="btn btn-success btn-block" style="width: 100px; color:rgb(128, 0, 0); background-color: rgb(233, 211, 197); border: 3px solid rgb(128, 0, 0);" >Change item</button>
+                            </form>
+                        </div>
+                    </div>
+            </div>
+        </div>
+    </div>
+
+
 
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>

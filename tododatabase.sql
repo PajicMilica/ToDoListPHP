@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 14, 2021 at 03:48 PM
+-- Generation Time: Dec 10, 2021 at 10:00 AM
 -- Server version: 10.4.21-MariaDB
--- PHP Version: 7.3.31
+-- PHP Version: 8.0.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -28,11 +28,20 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `item` (
-  `IdItem` int(11) NOT NULL,
-  `NameItem` int(11) NOT NULL,
-  `FinalDate` int(11) NOT NULL,
-  `idUser` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `idItem` int(11) NOT NULL,
+  `nameItem` varchar(100) NOT NULL,
+  `dateItem` date NOT NULL,
+  `urgent` varchar(100) NOT NULL,
+  `User` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `item`
+--
+
+INSERT INTO `item` (`idItem`, `nameItem`, `dateItem`, `urgent`, `User`) VALUES
+(3, 'Tr', '2021-12-15', 'no', 1),
+(5, 'Trening', '2021-12-17', 'no', 1);
 
 -- --------------------------------------------------------
 
@@ -64,7 +73,8 @@ INSERT INTO `user` (`Id`, `FirstName`, `LastName`, `Username`, `Password`) VALUE
 -- Indexes for table `item`
 --
 ALTER TABLE `item`
-  ADD KEY `id` (`idUser`);
+  ADD PRIMARY KEY (`idItem`),
+  ADD KEY `fr` (`User`);
 
 --
 -- Indexes for table `user`
@@ -75,6 +85,12 @@ ALTER TABLE `user`
 --
 -- AUTO_INCREMENT for dumped tables
 --
+
+--
+-- AUTO_INCREMENT for table `item`
+--
+ALTER TABLE `item`
+  MODIFY `idItem` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `user`
@@ -90,7 +106,7 @@ ALTER TABLE `user`
 -- Constraints for table `item`
 --
 ALTER TABLE `item`
-  ADD CONSTRAINT `id` FOREIGN KEY (`idUser`) REFERENCES `user` (`Id`);
+  ADD CONSTRAINT `fr` FOREIGN KEY (`User`) REFERENCES `user` (`Id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
