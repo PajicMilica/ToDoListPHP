@@ -10,7 +10,7 @@ if (!isset($_SESSION['user_id'])) {
     exit();
 }
 
-$podaci = Dodaj::getAll($_SESSION['user_id'],$conn);
+$podaci = Dodaj::getAll($_SESSION['user_id'], $conn);
 if (!$podaci) {
     echo "Nastala je greška pri preuzimanju podataka";
     die();
@@ -37,13 +37,16 @@ if ($podaci->num_rows == 0) {
 
 
     <div class="row" style=" margin-top: 16%; background-color: rgba(225, 225, 208, 0.5);">
-        <div class="col-md-6">
+        <div class="col-md-4">
             <button id="btn" class="btn btn-info btn-block" style="border-radius: 50%; background-color: rgb(128, 0, 0);!important; border: 3px solid black; "> Show</button>
         </div>
-        <div class="col-md-6">
+        <div class="col-md-4">
             <button id="btn-dodaj" type="button" class="btn btn-success btn-block" style=" border-radius: 50%; background-color: rgb(128, 0, 0); border: 3px solid black;" data-toggle="modal" data-target="#myModal"> Add Item</button>
         </div>
-        
+        <div class="col-md-4">
+            <button id="btn-pretraga" class="btn btn-warning btn-block" style=" border-radius: 50%; background-color: rgb(128, 0, 0); border: 3px solid black;"> Search</button>
+            <input type="text" id="myInput" onkeyup="Pretraga()" placeholder="Search for items by name" hidden>
+        </div>
     </div>
 
 
@@ -199,6 +202,25 @@ if ($podaci->num_rows == 0) {
             }
         }
 
+
+        function Pretraga() {
+            var input, filter, table, tr, td, i, txtValue;
+            input = document.getElementById("myInput");
+            filter = input.value.toUpperCase();
+            table = document.getElementById("myTable");
+            tr = table.getElementsByTagName("tr");
+            for (i = 0; i < tr.length; i++) {
+                td = tr[i].getElementsByTagName("td")[1];
+                if (td) {
+                    txtValue = td.textContent || td.innerText;
+                    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                        tr[i].style.display = "";
+                    } else {
+                        tr[i].style.display = "none";
+                    }
+                }
+            }
+        }
     </script>
 
 

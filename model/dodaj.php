@@ -17,9 +17,24 @@ class Dodaj{
 
     public function deleteById(mysqli $conn)
     {
-        $query = "DELETE FROM item WHERE idItem=$this->id";
+        $query = "DELETE FROM item WHERE idItem='$this->id'";
         return $conn->query($query);
     }
+
+    public static function getById($id, mysqli $conn){
+        $query = "SELECT * FROM item WHERE idItem='$id'";
+
+        $myObj = array();
+        if($msqlObj = $conn->query($query)){
+            while($red = $msqlObj->fetch_array(1)){
+                $myObj[]= $red;
+            }
+        }
+
+        return $myObj;
+
+    }
+
 
     public static function update(Dodaj $dodaj, mysqli $conn)
     {
@@ -35,7 +50,7 @@ class Dodaj{
 
   public static function getAll($idUser, mysqli $conn)
   {
-      $query = "SELECT * FROM item WHERE User=$idUser";
+      $query = "SELECT * FROM item WHERE User='$idUser'";
       return $conn->query($query);
   }
 

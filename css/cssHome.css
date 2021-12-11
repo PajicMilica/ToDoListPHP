@@ -23,4 +23,8 @@ th{
   background-color: rgb(233, 211, 197);
   border: 5px solid #3d1a1a;
 
+}
+:placeholder-shown{
+  width: 300px;
+  height: 30px;
 };

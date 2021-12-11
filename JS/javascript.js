@@ -87,6 +87,55 @@ $('#izmeniForm').submit(function(event){
 });
 
 
+
+$('#btn-izmeni').click(function () {
+    const checked = $('input[name=checked-donut]:checked');
+    request = $.ajax({
+        url: 'handler/get.php',
+        type: 'post',
+        data: {'id': checked.val()},
+        dataType: 'json'
+    });
+
+
+    request.done(function (response, textStatus, jqXHR) {
+        console.log('Popunjena');
+        $('#nameItem').val(response[0]['nameItem']);
+        console.log(response[0]['nameItem']);
+
+        $('#date').val(response[0]['date'].trim());
+        console.log(response[0]['date'].trim());
+
+        $('#urgent').val(response[0]['urgent'].trim());
+        console.log(response[0]['urgent'].trim());
+
+        $('#id').val(checked.val());
+
+        console.log(response);
+    });
+
+   request.fail(function (jqXHR, textStatus, errorThrown) {
+       console.error('The following error occurred: ' + textStatus, errorThrown);
+   });
+
+});
+
+$('#btn-pretraga').click(function () {
+
+    var para = document.querySelector('#myInput');
+    console.log(para);
+    var style = window.getComputedStyle(para);
+    console.log(style);
+    if (!(style.display === 'inline-block') || ($('#myInput').css("visibility") ==  "hidden")) {
+        console.log('block');
+        $('#myInput').show();
+        document.querySelector("#myInput").style.visibility = "";
+    } else {
+       document.querySelector("#myInput").style.visibility = "hidden";
+    }
+});
+
+
 $('#btn').click(function () {
     $('#pregled').toggle();
 });
