@@ -89,8 +89,11 @@ if ($podaci->num_rows == 0) {
                             <button id="btn-izmeni" class="btn btn-warning"  style="background-color: rgb(128, 0, 0); border: 1px solid white;" data-toggle="modal" data-target="#izmeniModal" >Change</button>
                         </div>
 
-                        <div >
+                        <div class="col-md-1" style="text-align: right;">
                             <button id="btn-obrisi" formmethod="post" class="btn btn-danger" style="background-color: rgb(128, 0, 0); border: 1px solid white;">Delete</button>          
+                        </div>
+                        <div class="col-md-10" style="text-align: right;">
+                            <button id="btn-sortiraj" class="btn btn-normal"  style="margin-left: 90%; color: white; background-color: rgb(128, 0, 0); border: 1px solid white; "onclick="sort()">Sort</button>
                         </div>
                 </div>
         </div>      
@@ -168,6 +171,35 @@ if ($podaci->num_rows == 0) {
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="JS/javascript.js"></script>
         
+
+    
+    
+    <script>
+        function sort() {
+            var table, rows, switching, i, x, y, shouldSwitch;
+            table = document.getElementById("myTable");
+            switching = true;
+
+            while (switching) {
+                switching = false;
+                rows = table.rows;
+                for (i = 1; i < (rows.length - 1); i++) {
+                    shouldSwitch = false;
+                    x = rows[i].getElementsByTagName("TD")[3];
+                    y = rows[i + 1].getElementsByTagName("TD")[3];
+                    if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
+                        shouldSwitch = true;
+                        break;
+                    }
+                }
+                if (shouldSwitch) {
+                    rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+                    switching = true;
+                }
+            }
+        }
+
+    </script>
 
 
 </body>
